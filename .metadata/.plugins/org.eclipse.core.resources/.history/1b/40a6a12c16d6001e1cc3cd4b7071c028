@@ -1,0 +1,11 @@
+package firstlab;
+
+public class HelloWorlld {
+	String[] Array_of_Programming_Langs={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+	int n = (int) (Math.random() * 1_000_000);
+	byte nr=0b10101;
+	//n=n*3 + nr;
+	public static void main(String args[]) {
+	System.out.println("Hello world!");
+	}
+}

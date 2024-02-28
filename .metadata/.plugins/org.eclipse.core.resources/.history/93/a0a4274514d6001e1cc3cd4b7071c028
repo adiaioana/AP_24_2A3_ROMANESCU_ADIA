@@ -1,0 +1,8 @@
+package firstlab;
+
+public class HelloWorlld {
+	String[] Alfa={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+	public static void main(String args[]) {
+	System.out.println("Hello world!");
+}
+}

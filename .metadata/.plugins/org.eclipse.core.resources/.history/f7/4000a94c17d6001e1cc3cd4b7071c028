@@ -1,0 +1,21 @@
+package firstlab;
+
+public class HelloWorlld {
+	
+	public static void main(String args[]) {
+		HelloWorlld HL=new HelloWorlld();
+		HL.compulsory();
+	}
+	public static void compulsory() {
+		String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+		System.out.println(languages);
+		int n = (int) (Math.random() * 1_000_000);
+		byte nr=0b10101;
+		int res=n*3+nr;
+		if (res<10) {
+			System.out.println("Willy-nilly, this semester I will learn " + languages[res]);
+		}
+		else System.out.println("Error");
+		
+	}
+}

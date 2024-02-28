@@ -1,0 +1,32 @@
+package firstlab;
+
+public class HelloWorlld {
+	
+	public static void main(String args[]) {
+		HelloWorlld HL=new HelloWorlld();
+		HL.compulsory();
+	}
+	public static void compulsory() {
+		String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+		System.out.println(languages);
+		int n = (int) (Math.random() * 1_000_000);
+		byte nr=0b10101;
+		
+		int res=(n*3+nr+0xFF)*6;
+		while (res>9) {
+			int sumcif=0;
+			int cpy=res;
+			while (cpy>0) {
+				sumcif+=(cpy%10);
+				cpy/=10;
+			}
+		}
+		
+		int CC=res%9;
+		if (CC<10) {
+			System.out.println("Willy-nilly, this semester I will learn " + languages[CC]);
+		}
+		else System.out.println("Error");
+		
+	}
+}

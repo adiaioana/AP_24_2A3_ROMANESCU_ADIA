@@ -1,0 +1,38 @@
+package firstlab;
+
+public class HelloWorlld {
+	
+	public static void main(String args[]) {
+		HelloWorlld HL=new HelloWorlld();
+		HL.compulsory();
+	}
+	public void compulsory() {
+		String[] languages={"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
+		System.out.println(languages);
+		int n = (int) (Math.random() * 1_000_000);
+		int res=(n*3+0b10101+0xFF)*6;
+		
+		int CC=res%9;
+		if (CC==0) {
+			CC=9;
+		}
+		res=cifra_control(res);
+		if (CC<10) {
+			System.out.println("Willy-nilly, this semester I will learn " + languages[CC]);
+		}
+		else System.out.println("Error");
+		
+	}
+	public static int cifra_control(int k) {
+		while (k>9) {
+			int sumcif=0;
+			int cpy=k;
+			while (cpy>0) {
+				sumcif+=(cpy%10);
+				cpy/=10;
+			}
+			k=sumcif;
+		}
+		return k;
+	}
+}
