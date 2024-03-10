@@ -1,14 +1,14 @@
 package vrp;
-abstract class AbstractVehicle implements Object {
-    protected Depot source;
+public abstract class AbstractVehicle implements Object {
+    protected int source;
     protected String model;
     protected Integer vehId;
     protected String licensePlate;
     public AbstractVehicle() {
-        model=""; licensePlate=""; source=new Depot();
+        model=""; licensePlate=""; source=0;
     }
     public AbstractVehicle(int depo, String strModel, String strLicense){
-        source=new Depot(depo);
+        source=depo;
         model=strModel;
         licensePlate=strLicense;
     }
@@ -21,7 +21,7 @@ abstract class AbstractVehicle implements Object {
         this.vehId = vehId;
     }
 
-    public Depot getSource() {
+    public int getSource() {
         return source;
     }
 
@@ -41,7 +41,7 @@ abstract class AbstractVehicle implements Object {
         this.model = model;
     }
 
-    public void setSource(Depot source) {
+    public void setSource(int source) {
         this.source = source;
     }
 

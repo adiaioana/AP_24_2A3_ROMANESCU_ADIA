@@ -1,7 +1,5 @@
 
-import vrp.Client;
-import vrp.Depot;
-import vrp.Vehicle;
+import vrp.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,18 +13,30 @@ public class Main {
     public static int noVehicles=0;
     public static void main(String[] args) {
         Main adia=new Main();
-        adia.compulsory();
+        //adia.compulsory();
         adia.homework();
     }
     public void homework(){
-/**
- * Create classes that describe the problem and its solution.
- # Override the equals method form the Object class for the Depot, Vehicle, Client classes. The problem should not allow adding the same depot, vehicle or client twice.
- # Vehicles may be of different types. Create dedicated classes for trucks and drones. Trucks have a capacity property, while drones have a maximum flight duration (these properties will not be used by the algorithms). The Vehicle class will become abstract.
- # Implement the method getVehicles in the Problem class, returning an array of all the vehicles, form all depots.
- * Assume that the times required to travel between the locations (depot-to-client or client-to-client) are known (You may generate them randomly). Implement a simple greedy algorithm for allocating clients to vehicles.
- * Write doc comments in your source code and generate the class documentation using javadoc.
- **/
+        Vector<Client> clients=new Vector<Client>();
+        Vector<Depot> depots=new Vector<Depot>();
+        Vector<AbstractVehicle> vehicles=new Vector<AbstractVehicle>();
+
+        this.getClientData(clients);
+        this.getDepotData(depots);
+        this.getAbstractVehicleData(vehicles);
+
+        for(Depot D:depots) {
+            D.setVehicleid(D.getId());
+        }
+        int it=0;
+        for(AbstractVehicle V:vehicles){
+            it++;
+            V.setSource(it);
+        }
+
+        this.printall(vehicles,"vehicles");
+        Solution solved=new Solution(clients,depots,vehicles);
+        System.out.println("Best cost is..."+solved.getAnswer());
     }
     public void compulsory() {
         Vector<Client> clients=new Vector<Client>();
@@ -86,6 +96,42 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
+    public void getAbstractVehicleData(Vector<AbstractVehicle> vehicles){
+        int depo=0; String vehModel=""; String vehLicense=""; String vehType="";
+        try {
+            File vehfile= new File("./src/supervehicledata.txt");
+            Scanner reader = null;
+            reader = new Scanner(vehfile);
+
+            //reading format: ID Model LicensePlate
+            while (reader.hasNextLine()) {
+                String data = reader.nextLine();
+                String[] words = data.split(" ");
+
+                for(String word:words)
+
+                    if(isNumeric(word)==true){
+                        depo=Integer.valueOf(word);
+                    }
+                    else{
+                        if(vehType.isEmpty()){
+                            vehType=word;
+                        }
+                        else if(vehModel.isEmpty()) {
+                            vehModel=word;
+                        }
+                        else vehLicense=word;
+                    }
+                switch (vehType){
+                    case "Truck": Truck camionul=new Truck(depo,vehModel,vehLicense); vehicles.add(camionul); break;
+                    case "Drone": Drone drona=new Drone(depo,vehModel,vehLicense); vehicles.add(drona); break;
+                }
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void getClientData(Vector<Client> clients){
         String tpClient = ""; int timeClient=0;
         try {
@@ -107,7 +153,9 @@ public class Main {
                     }
 
                 Client C=new Client(tpClient,noClients);
+                    noClients++;
                     C.setTimeInterval(timeClient);
+                    clients.add(C);
             }
             reader.close();
         } catch (FileNotFoundException e) {

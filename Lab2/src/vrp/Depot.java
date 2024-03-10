@@ -1,8 +1,8 @@
 package vrp;
 
 public class Depot implements Object {
-    private int id;
-    private int vehicleid;
+    protected int id;
+    protected int vehicleid;
 
     public Depot(int nr){
         id=nr;vehicleid=-1;
