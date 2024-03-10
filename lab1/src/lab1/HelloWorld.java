@@ -128,6 +128,7 @@ public class HelloWorld {
 			}
 
 			adj_mat[N][0]=N-1;
+			print_mat_text();
 		}
 		
 		public void print_mat_text() {
