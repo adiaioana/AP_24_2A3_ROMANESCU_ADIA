@@ -1,7 +1,11 @@
+# Lab 2 Report - Adia Romanescu (2A3)
+
+## Homework:
+For homework, the challenge was implementing my Greedy algorithm idea as clean as possible. My algorithm basically pairs depots with their first client (first in the path, as to connected in the chosen costs paths) by choosing the minimum cost and available client. Afterwards, in each iteration, for each path, I try to connect the last client to a new one by always choosing the minimum cost and available client.
+
 # Lab 1 Report - Adia Romanescu (2A3)
 
 ## Homework:
-
 For the homework assignment, I implemented a simple iteration over the [a,b] interval. I also developed a function to verify k-reducibility. The maximum number of iterations is set to 100, a somewhat arbitrary choice. However, it seems intuitive that either setting a maximum number of iterations or using a frequency vector would help in checking if a loop has been entered.
 
 ## Bonus:
