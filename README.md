@@ -3,9 +3,9 @@
 ## Homework:
 For homework, the challenge was implementing my Greedy algorithm idea as clean as possible. My algorithm basically pairs depots with their first client (first in the path, as to connected in the chosen costs paths) by choosing the minimum cost and available client. Afterwards, in each iteration, for each path, I try to connect the last client to a new one by always choosing the minimum cost and available client.
 ## Bonus:
-First version would be in BonusGraph, but this version considers that the graph is fully in a grid mode (which can be fixed by adding 'phantom' nodes for the nodes within the grid graph that are not present, the cost between phantom nodes and other nodes would be 0, so it would work, but pretty terrible to implement something like this).
-Second version would be in BonusWorking. In this version, the input gained is the cost matrixes and by a DFS, the graph is positioned on the grid.
-
+First version(BonusGraph) would be in BonusGraph, but this version considers that the graph is fully in a grid mode (which can be fixed by adding 'phantom' nodes for the nodes within the grid graph that are not present, the cost between phantom nodes and other nodes would be 0, so it would work, but pretty terrible to implement something like this).
+Second version(BonusWorking) would be in BonusWorking. In this version, the input gained is the cost matrixes and by a DFS, the graph is positioned on the grid.
+For version 3 (Bonus3), I simply considered taking the matrix as an input and runned a fill from each client to determine the minimum cost from that client to each depot.
 # Lab 1 Report - Adia Romanescu (2A3)
 
 ## Homework:
