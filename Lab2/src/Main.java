@@ -11,8 +11,11 @@ public class Main {
     public static int noClients = 0;
     public static int noDepots = 0;
     public static int noVehicles = 0;
+    private int nrLines=0;
+    private int nrCollumns=0;
     double[][] costDepoToClient=new double[110][110];
     double[][] costClientToClient=new double[110][110];
+    String[][] mat=new String[110][110];
 
     public static void main(String[] args) {
         Main adia = new Main();
@@ -22,11 +25,10 @@ public class Main {
     }
 
     public void bonus() {
-        noDepots=noClients=0;
         double[][] depoToCli, cliToCli;
         this.getBonusData();
-        BonusGraph solver=new BonusGraph(costDepoToClient,costClientToClient,noDepots,noClients);
-        System.out.println("The found answer is..."+ solver.greedy_algorithm());
+        Bonus3 solver=new Bonus3(costDepoToClient,costClientToClient,noDepots,noClients,mat,nrLines,nrCollumns);
+        System.out.println("The found answer is..."+ solver.solve());
     }
 
     public void homework() {
@@ -77,6 +79,7 @@ public class Main {
     public void getBonusData() {
         int whichDataSet = 1;
 
+
         try {
             File bonusfile = new File("./src/bonusdata.txt");
             Scanner reader = null;
@@ -97,9 +100,15 @@ public class Main {
 
                     if (whichDataSet == 1) {
                         if (word.charAt(0) == 'D') {
+                            mat[ln][cl]=word;
                             noDepots++;
+                            if(ln>nrLines) nrLines=ln;
+                            if(cl>nrCollumns) nrCollumns=cl;
                         } else if (word.charAt(0) == 'C') {
+                            mat[ln][cl]=word;
                             noClients++;
+                            if(ln>nrLines) nrLines=ln;
+                            if(cl>nrCollumns) nrCollumns=cl;
                         }
                     } else if (whichDataSet == 2) {
                         if (isNumeric(word)) {
