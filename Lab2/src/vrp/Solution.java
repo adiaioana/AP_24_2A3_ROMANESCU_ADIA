@@ -30,7 +30,9 @@ public class Solution {
         this.initializeTravelTime();
         answer=this.solveGreedy();
     }
-
+    public double abs(double alfa){
+        return ((alfa>0)?alfa:-alfa);
+    }
     public void initializeTravelTime(){
         Random rand = new Random();
         for(int it1=1; it1<= problem.nrClients(); it1++)
@@ -54,7 +56,7 @@ public class Solution {
             lastAdded[i]=0;
         }
 
-        for(Depot D: problem.depots){
+        for(Depot D: problem.depots){ //D
             int idc=-1;
             double mntravel=MAXTRAVEL;
             for(Client C: problem.clients)
@@ -94,8 +96,8 @@ public class Solution {
 
         double finalAnswer=0;
         for(Depot D: problem.getDepots()){
-            totalCost[D.getId()]+=travelDepoToClient[D.getId()][lastAdded[D.getId()]];
-            finalAnswer+=totalCost[D.getId()];
+            totalCost[D.getId()]+=abs(travelDepoToClient[D.getId()][lastAdded[D.getId()]]);
+            finalAnswer+=abs(totalCost[D.getId()]);
         }
         return finalAnswer;
     }
