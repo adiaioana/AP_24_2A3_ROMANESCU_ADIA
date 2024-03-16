@@ -1,3 +1,8 @@
+# Lab 3 Report - Adia Romanescu (2A3)
+
+## Homework:
+For homework, in order to pair each day from the travel plan with an attraction from the trip, I used the maximum bipartite matching algorithm. The first set is composed of the days and the second set of attractions, for each pair of nodes (day, attr), there is an edge if on that day attraction attr is possible to visit. In order to maximise the number of visited attractions, I run a BPM.
+
 # Lab 2 Report - Adia Romanescu (2A3)
 
 ## Homework:
