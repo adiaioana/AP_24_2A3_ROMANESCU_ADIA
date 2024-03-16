@@ -1,24 +1,36 @@
 package first;
 
-public class Concert extends Attraction{
+import first.basics.Attraction;
+import first.basics.Pair;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Map;
+
+public class Concert extends Attraction {
     int ticketPrice;
-    String artist, date;
+    String artist;
     public Concert(){
         init();
     }
-    public Concert(String who, String when){
+    public Concert(String who){
         init();
         artist=who;
-        date=when;
+        name="Concert with "+artist;
     }
 
     private void init(){
         ticketPrice=100;
         artist="Bosquito";
-        date="24/7/2025";
+        strtimes= """
+                2024-03-16 20:00-22:00
+                2024-03-18 12:29-15:00
+                """;
+        makeMap();
     }
+
     @Override
-    protected String getString() {
+    public String toString() {
         return "Concert with "+artist+" with price "+ticketPrice;
     }
     public boolean isPayble() {
@@ -30,19 +42,8 @@ public class Concert extends Attraction{
     public boolean isVisitable() {
         return false;
     }
-
     @Override
-    public boolean isVisitable(String date) {
-        return false;
-    }
-
-    @Override
-    public boolean isVisitableDMY(int day, int month, int year) {
-        return false;
-    }
-
-    @Override
-    public String getVisitingTimes() {
-        return "None";
+    public Map<LocalDate, Pair<LocalTime, LocalTime>> getVisitingTimes() {
+        return timetable;
     }
 }

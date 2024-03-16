@@ -1,4 +1,4 @@
-package first;
+package first.basics;
 
 public interface Payable {
     public boolean isPayble();

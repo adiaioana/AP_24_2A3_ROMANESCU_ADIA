@@ -1,67 +1,56 @@
 package first;
 
-public class Church extends Attraction{
-    String timetable="", name="", adress="";
+import first.basics.Attraction;
+import first.basics.Pair;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDate;
+import java.util.Map;
+import java.util.concurrent.locks.LockSupport;
+
+public class Church extends Attraction {
+
     public Church(){
         init();
     }
-    public Church(String saintName, String adressOf){
+    public Church(String saintName, String locationOf){
         init();
-        adress=adressOf;
+        location=locationOf;
         name=saintName;
     }
-
     public boolean isPayble() {
         return false;
     }
-
-
     public double getPrice() {
         return 0;
     }
 
 
-    public boolean isVisitable(String date) {
-        String[] words=timetable.split(" ,;");
-        String ant="";
-        for(String it: words){
-
-            if(ant.isEmpty()==false && date.toLowerCase().equals(ant.toLowerCase())){
-                if(it.toLowerCase().equals("closed")==true)
-                    return false;
-                return true;
-            }
-            ant=it;
-        }
-        return false;
-    }
 
     @Override
-    public boolean isVisitableDMY(int day, int month, int year) {
-        return false;
-    }
-
-    @Override
-    public String getVisitingTimes() {
+    public Map<LocalDate, Pair<LocalTime, LocalTime>> getVisitingTimes() {
         return timetable;
     }
-
     void init(){
         name="Saint Andrew Cathedral";
-        adress="Street Saint Andrew 19";
-        timetable= """
-                Monday 13:00-17:00
-                Tuesday 13:00-17:00
-                Wednesday closed
-                Thursday closed
-                Friday closed
-                Saturday 9:00-17:00
-                Sunday 9:00-17:00
+        location="Street Saint Andrew 19";
+        strtimes= """
+                2024-03-16 09:00-17:00
+                2024-03-17 09:00-19:00
+                2024-03-18 CLOSED
                 """;
+        makeMap();
+    }
+    @Override
+    public String toString() {
+        return "Church "+name+" from "+location;
     }
 
+
+
     @Override
-    protected String getString() {
-        return "Church "+name+" from "+adress;
+    public boolean isVisitable() {
+        return true;
     }
 }

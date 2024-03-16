@@ -1,20 +1,28 @@
 package first;
 
-public class Statue extends Attraction{
-    String timetable="", name="", adress="";
+import first.basics.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Map;
+
+public class Statue extends Attraction {
     public Statue(){
         init();
     }
-    public Statue(String whoseStatue, String adressOf){
+    public Statue(String whoseStatue, String locationOf){
         init();
         name="Statue of "+whoseStatue;
-        adress=adressOf;
+        location=locationOf;
     }
     void init(){
-        timetable="24/7";
         name="Statue of Liberty";
-        adress="110 Liberty STREET";
+        location="110 Liberty STREET";
+        strtimes= """
+                2024-03-17 10:30-20:30
+                2024-03-18 10:03-13:00
+                """;
+        makeMap();
     }
     @Override
     public boolean isPayble() {
@@ -30,20 +38,11 @@ public class Statue extends Attraction{
         return true;
     }
     @Override
-    protected String getString() {
-        return "Statue "+name+" from "+adress;
+    public String toString() {
+        return "Statue "+name+" from "+location;
     }
-    public boolean isVisitable(String date) {
-        return true;
-    }
-
     @Override
-    public boolean isVisitableDMY(int day, int month, int year) {
-        return true;
-    }
-
-    @Override
-    public String getVisitingTimes() {
+    public Map<LocalDate, Pair<LocalTime, LocalTime>> getVisitingTimes() {
         return timetable;
     }
 }
