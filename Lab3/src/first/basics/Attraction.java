@@ -55,7 +55,7 @@ public abstract class Attraction implements Visitable, Payable {
         }
         return false;
     }
-
+    public abstract int color();
     public boolean isVisitable(String date) {
         LocalTime localTime = null;
         LocalDate localDate = null;
@@ -74,6 +74,7 @@ public abstract class Attraction implements Visitable, Payable {
         return (timetable.containsKey(localDate));
     }
     public abstract String toString();
+    public abstract int getInd();
 
     public boolean isVisitableDMYHM(int day, int month, int year, int hour, int minute) {
         LocalDate localDate = LocalDate.of(year, month, day);

@@ -44,7 +44,17 @@ public class Main {
     }
 
     public void bonus() {
+        Trip firstTrip = new Trip();
+        Church saintPeter = new Church("Peter", "11 Peter ST");
+        Statue vidraStatue = new Statue("Vidra", "CCS");
+        Concert farazahar = new Concert("Fara Zahar");
 
+        firstTrip.addAttraction(saintPeter);
+        firstTrip.addAttraction(vidraStatue);
+        firstTrip.addAttraction(farazahar);
+
+        TravelPlan travelPlan=new TravelPlan(10,firstTrip);
+        travelPlan.makeTravelPlanBonus();
     }
 
 }

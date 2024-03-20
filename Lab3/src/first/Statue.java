@@ -37,6 +37,17 @@ public class Statue extends Attraction {
     public boolean isVisitable() {
         return true;
     }
+
+    @Override
+    public int getInd() {
+        return 2;
+    }
+
+    @Override
+    public int color() {
+        return 3;
+    }
+
     @Override
     public String toString() {
         return "Statue "+name+" from "+location;

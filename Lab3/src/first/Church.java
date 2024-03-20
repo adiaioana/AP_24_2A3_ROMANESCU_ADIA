@@ -26,7 +26,10 @@ public class Church extends Attraction {
         return 0;
     }
 
-
+    @Override
+    public int getInd() {
+        return 0;
+    }
 
     @Override
     public Map<LocalDate, Pair<LocalTime, LocalTime>> getVisitingTimes() {
@@ -42,6 +45,12 @@ public class Church extends Attraction {
                 """;
         makeMap();
     }
+
+    @Override
+    public int color() {
+        return 1;
+    }
+
     @Override
     public String toString() {
         return "Church "+name+" from "+location;

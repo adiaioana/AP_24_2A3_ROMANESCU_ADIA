@@ -1,5 +1,8 @@
 package first.basics;
 
+import java.time.LocalTime;
+import java.util.Comparator;
+
 public class Pair<K, V> {
     private K key;
     private V value;
@@ -22,4 +25,5 @@ public class Pair<K, V> {
     public String toString(){
         return String.valueOf(key)+" "+String.valueOf(value);
     }
+
 }

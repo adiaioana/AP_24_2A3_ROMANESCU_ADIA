@@ -30,6 +30,16 @@ public class Concert extends Attraction {
     }
 
     @Override
+    public int getInd() {
+        return 1;
+    }
+
+    @Override
+    public int color() {
+        return 2;
+    }
+
+    @Override
     public String toString() {
         return "Concert with "+artist+" with price "+ticketPrice;
     }
