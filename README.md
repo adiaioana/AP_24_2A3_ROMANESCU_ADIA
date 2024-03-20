@@ -2,6 +2,9 @@
 
 ## Homework:
 For homework, in order to pair each day from the travel plan with an attraction from the trip, I used the maximum bipartite matching algorithm. The first set is composed of the days and the second set of attractions, for each pair of nodes (day, attr), there is an edge if on that day attraction attr is possible to visit. In order to maximise the number of visited attractions, I run a BPM.
+## Bonus:
+First Greedy runs a dynamic programming algorithm (using configurations), it calculates for a configuration containing some types of attractions that end at a certain time, if it's possible basically. Time complexity is around O(M*M*(2^T)), where M is the number of attraction and T is the number of types. 
+Second Greedy simply runs a Greedy on the sorted array (with sorting criteria using the end of the visiting intervals).
 
 # Lab 2 Report - Adia Romanescu (2A3)
 
