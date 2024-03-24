@@ -9,7 +9,6 @@ class Driver extends Person {
         this.licensePlate = licensePlate;
     }
 
-    // Getter and setter for licensePlate
     public String getLicensePlate() {
         return licensePlate;
     }
@@ -18,7 +17,6 @@ class Driver extends Person {
         this.licensePlate = licensePlate;
     }
 
-    // Method to check if a driver can pick up a passenger
     public boolean canPickUpPassenger(Passenger passenger) {
         return this.getDestination().equals(passenger.getDestination());
     }

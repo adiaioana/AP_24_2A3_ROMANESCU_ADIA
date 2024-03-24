@@ -1,13 +1,29 @@
 package org.example;
+import com.github.javafaker.Faker;
+
+import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
 
 public class Main {
+    Problem problem=new Problem();
     public static void main(String[] args) {
         Main Adia=new Main();
-        Adia.compulsory();
+
+        Adia.homework();
     }
+    public void homework(){
+        List<String> allDestinations = problem.getAllDestinations();
+        System.out.println("All destinations: " + allDestinations);
+
+        Map<String, List<Person>> destinationMap = problem.getDestinationMap();
+        System.out.println("Destination map: " + destinationMap);
+
+        Map<Driver,Passenger> solution=problem.solveGreedy();
+        System.out.println("Solution: " +solution);
+    }
+
     public void compulsory(){
         Passenger passenger1 = new Passenger("Maria", 25, "Strada Henri", false);
         Passenger passenger2 = new Passenger("Nicolae", 30, "Strada Henri", true);
@@ -31,7 +47,7 @@ public class Main {
 
         System.out.println("Drivers sorted by age:");
         for (Driver driver : driversList) {
-            System.out.println(driver.getName() + ", age= " + driver.getAge());
+            System.out.println(driver.toString());
         }
 
 
@@ -42,8 +58,9 @@ public class Main {
 
         System.out.println("\nPassengers sorted by name:");
         for (Passenger passenger : passengersSet) {
-            System.out.println(passenger.getName() + ", age= " + passenger.getAge());
+            System.out.println(passenger.toString());
         }
+
         ArrayList<Person> persons= (ArrayList<Person>) generateRandomPersons(9);
         List<Driver> drivers = persons.stream()
                 .filter(person -> person instanceof Driver)
@@ -55,24 +72,24 @@ public class Main {
                 .map(person -> (Passenger) person)
                 .collect(Collectors.toList());
 
-        // Print the filtered lists
         System.out.println("Drivers:");
-        drivers.forEach(driver -> System.out.println(driver.getName()));
+        drivers.forEach(driver -> System.out.println(driver.toString()));
 
         System.out.println("\nPassengers:");
-        passengers.forEach(passenger -> System.out.println(passenger.getName()));
+        passengers.forEach(passenger -> System.out.println(passenger.toString()));
     }
 
-    private static List<Person> generateRandomPersons(int count) {
+    private List<Person> generateRandomPersons(int count) {
         List<Person> persons = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < count; i++) {
             if (random.nextBoolean()) {
-                persons.add(new Driver("Driver" + i, random.nextInt(50), "Destination" + i, "License" + i));
+                persons.add(new Driver("Driver" + i, random.nextInt(50), problem.helper.whichAddr((i%6==0)?6:i%6), "License" + i));
             } else {
-                persons.add(new Passenger("Passenger" + i, random.nextInt(50), "Destination" + i, random.nextBoolean()));
+                persons.add(new Passenger("Passenger" + i, random.nextInt(50), problem.helper.whichAddr((i%6==0)?6:i%6), random.nextBoolean()));
             }
         }
         return persons;
     }
+
 }

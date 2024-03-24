@@ -1,5 +1,9 @@
 package org.example;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 class Passenger extends Person {
     private boolean carSickness;
 
@@ -8,7 +12,6 @@ class Passenger extends Person {
         this.carSickness = carSickness;
     }
 
-    // Getter and setter for carSickness
     public boolean isCarSickness() {
         return carSickness;
     }
