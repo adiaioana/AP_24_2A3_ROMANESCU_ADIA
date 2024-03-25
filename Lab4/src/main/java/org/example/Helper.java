@@ -2,15 +2,51 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class Helper {
     final String destinationsFile="./src/main/java/org/example/destinations.txt";
     HashMap<Integer, String> addresses=new HashMap<Integer, String>(110);
+    Set<Integer>[] onpath=new Set[110];
     public Helper(){
         //setAddresses();
     }
+
+    public int getAddrRelation(int addr1, int addr2){
+        if(onpath[addr1].contains(addr2))
+            return 1;
+        if(onpath[addr2].contains(addr1))
+            return -1;
+        return 0;
+    }
+
+    public void setOnpath(){
+        Random random = new Random();
+        for(int key1: addresses.keySet()){
+            onpath[key1]=new HashSet<>();
+            onpath[key1].add(key1);
+        }
+        for(int key1: addresses.keySet())
+            for(int key2: addresses.keySet()){
+                if((random.nextInt()%100)%4==0 && !onpath[key1].contains(key2)) {
+                    onpath[key1].add(key2);
+                }
+            }
+    }
+    public void setOnpath(double prob){
+        Random random = new Random();
+        for(int key1: addresses.keySet()){
+            onpath[key1]=new HashSet<>();
+            onpath[key1].add(key1);
+        }
+        for(int key1: addresses.keySet())
+            for(int key2: addresses.keySet()){
+                if((random.nextInt()%100)==((int)prob*100) && !onpath[key1].contains(key2)) {
+                    onpath[key1].add(key2);
+                }
+            }
+    }
+
     public void debug(){
         for(int a:this.addresses.keySet()){
             System.out.println("K="+a+"; V="+addresses.get(a)+";");

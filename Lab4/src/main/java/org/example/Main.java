@@ -10,9 +10,14 @@ public class Main {
     Problem problem=new Problem();
     public static void main(String[] args) {
         Main Adia=new Main();
-
-        Adia.homework();
+        Adia.bonus();
     }
+    public void bonus(){
+        Problem problem1=new Problem(5000,5000,0.1);
+        Map<Driver,Passenger> solution=problem1.solveBetterGreedy();
+        System.out.println("Solution: " +solution);
+    }
+
     public void homework(){
         List<String> allDestinations = problem.getAllDestinations();
         System.out.println("All destinations: " + allDestinations);
@@ -20,7 +25,7 @@ public class Main {
         Map<String, List<Person>> destinationMap = problem.getDestinationMap();
         System.out.println("Destination map: " + destinationMap);
 
-        Map<Driver,Passenger> solution=problem.solveGreedy();
+        Map<Driver,Passenger> solution=problem.solveBetterGreedy();
         System.out.println("Solution: " +solution);
     }
 
