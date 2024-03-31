@@ -114,6 +114,9 @@ public class Problem {
                 passengerIterator.remove();
             }
         }
+
+      //  Iterator<Driver> driverIterator = drivers.iterator();
+
         return matches;
     }
 

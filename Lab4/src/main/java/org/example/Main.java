@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 public class Main {
     Problem problem=new Problem();
     public static void main(String[] args) {
-        Main Adia=new Main();
-        Adia.bonus();
+        Main adia=new Main();
+        adia.homework();
     }
     public void bonus(){
         Problem problem1=new Problem(5000,5000,0.1);

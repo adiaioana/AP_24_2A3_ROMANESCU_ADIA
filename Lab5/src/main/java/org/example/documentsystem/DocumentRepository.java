@@ -36,4 +36,24 @@ public class DocumentRepository {
             System.out.println("Person ID: " + people.elementAt(people.size()-1).getID());
         }
     }
+
+    public String getMasterDirectory() {
+        return masterDirectory+"\\";
+    }
+
+    public Document[] getDocuments(int personID)     {
+        var docs=new Document[110];
+        for(Person person:people)
+            if(Integer.parseInt(person.getID())==personID)
+                return person.documents().toArray(new Document[0]);
+        return docs;
+    }
+
+    public Document[] getDocuments(String personName)     {
+        var docs=new Document[110];
+        for(Person person:people)
+            if(person.name()==personName)
+                return person.documents().toArray(new Document[0]);
+        return docs;
+    }
 }

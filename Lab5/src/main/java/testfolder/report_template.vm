@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document Repository Report</title>
+</head>
+<body>
+<h1>Document Repository Report</h1>
+<ul>
+    #foreach($document in $documents)
+        <li>$document</li>
+    #end
+</ul>
+</body>
+</html>
