@@ -1,6 +1,7 @@
 # Lab 4 Report - Adia Romanescu (2A3)
 ## Homework:
 For the problem class, I simply added a list of persons and a "helper" class. Using the  helper class, I manage the map of locations. For the greedy algorithm, I simply sorted the lists by adress and matched them if their adress was the same.
+## Bonus: TBA
 
 # Lab 3 Report - Adia Romanescu (2A3)
 
