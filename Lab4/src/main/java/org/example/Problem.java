@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class Problem {
     public Helper helper=new Helper();
+    public CarpoolingSolver bonusSolver=null;
     ArrayList<Person> people=new ArrayList<>(110);
 
     public Problem(){
@@ -14,15 +15,29 @@ public class Problem {
         people.forEach(person -> helper.addAdress(person.getDestination()));
         people.forEach(person -> person.setIdDestination(helper.whichId(person.getDestination())));
         helper.setOnpath();
-        /*
-        * onpath sets the map corelations between locations (as to which destinations come before which destinations)
-        * */
+
+    }
+    public List<Driver> getDrivers(List<Person> personList){
+        List<Driver> drivers = personList.stream()
+                .filter(person -> person instanceof Driver)
+                .map(person -> (Driver) person)
+                .collect(Collectors.toList());
+
+        return drivers;
+    }
+    public List<Passenger> getPassenger(List<Person> personList){
+        List<Passenger> passengers = personList.stream()
+                .filter(person -> person instanceof Passenger)
+                .map(person -> (Passenger) person)
+                .collect(Collectors.toList());
+        return passengers;
     }
     public Problem(int nrDrivers, int nrPassengers, double randProb){
         people= (ArrayList<Person>) generateRandomPersonsWithFaker(nrDrivers,nrPassengers);
         people.forEach(person -> helper.addAdress(person.getDestination()));
         people.forEach(person -> person.setIdDestination(helper.whichId(person.getDestination())));
         helper.setOnpath(randProb);
+        bonusSolver=new CarpoolingSolver(getDrivers(people),getPassenger(people),getDestinationMap());
     }
     private List<Person> generateRandomPersonsWithFaker(int count){
         Faker faker = new Faker();

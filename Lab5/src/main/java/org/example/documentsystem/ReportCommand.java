@@ -26,7 +26,7 @@ public class ReportCommand extends Command {
         VelocityEngine velocityEngine = new VelocityEngine();
         velocityEngine.init();
 
-        Template template = velocityEngine.getTemplate(repo.getMasterDirectory()+"report_template.vm");
+        Template template = velocityEngine.getTemplate("D:\\Poppy\\Lab5\\src\\main\\java\\testfolder\\report_template.vm");
 
         VelocityContext context = new VelocityContext();
         List<String> documents = new ArrayList<>();

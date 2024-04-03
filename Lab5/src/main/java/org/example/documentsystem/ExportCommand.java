@@ -25,7 +25,7 @@ public class ExportCommand extends Command {
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            mapper.writeValue(new File(arguments[1]), repo);
+            mapper.writeValue(new File(arguments[0]), repo);
         } catch (IOException e) {
             throw new RepositoryException("Error exporting repository: " + e.getMessage());
         }

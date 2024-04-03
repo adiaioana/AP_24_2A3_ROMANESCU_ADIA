@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-class Passenger extends Person {
+public class Passenger extends Person {
     private boolean carSickness;
 
     public Passenger(String name, int age, String destination, boolean carSickness) {

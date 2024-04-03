@@ -55,7 +55,7 @@ public class Main {
                     break;
                 }
                 case "export": {
-                    var newComm= new ReportCommand(arguments);
+                    var newComm= new ExportCommand(arguments);
                     newComm.run(repository);
                     break;
                 }
