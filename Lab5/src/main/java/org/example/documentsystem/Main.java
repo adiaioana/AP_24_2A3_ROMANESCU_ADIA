@@ -1,15 +1,19 @@
 package org.example.documentsystem;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     static DocumentRepository repository = new DocumentRepository("D:\\Poppy\\Lab5\\src\\main\\java\\testfolder");
 
-    public static void main(String[] args) throws RepositoryException {
+    public static void main(String[] args) throws RepositoryException, IOException, InvalidFormatException {
         var adia=new Main();
-        adia.homework();
+        adia.bonus();
     }
     public void compulsory(){
         try {
@@ -17,6 +21,20 @@ public class Main {
         } catch (RepositoryException e) {
             System.err.println("Error: " + e.getMessage());
         }
+    }
+    public void bonus() throws IOException, InvalidFormatException {
+        try {
+            var bonus = new Bonus("D:\\Poppy\\Lab5\\src\\main\\java\\testfolder\\employee_abilities.xlsx");
+            List<Set<String>> maximalGroups = bonus.findMaximalGroups();
+            int groupNumber = 1;
+            for (Set<String> group : maximalGroups) {
+                System.out.println("Group " + groupNumber + ": " + group);
+                groupNumber++;
+            }
+        } catch (IOException | InvalidFormatException e) {
+            e.printStackTrace();
+        }
+
     }
     public void homework() throws RepositoryException {
         Scanner scanner = new Scanner(System.in);
