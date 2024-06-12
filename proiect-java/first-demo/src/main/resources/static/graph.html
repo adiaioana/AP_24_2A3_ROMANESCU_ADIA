@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Graph Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.1/sigma.min.js"></script>
+</head>
+<body>
+<div id="container" style="height: 800px;"></div>
+
+<script>
+
+    fetch('/api/graph')
+        .then(response => response.json())
+        .then(data => {
+            const s = new sigma({
+                graph: {
+                    nodes: data.nodes.map(node => ({
+                        id: node.id,
+                        label: node.label,
+                        x: node.x,
+                        y: node.y,
+                        size: node.size,
+                        color: node.color
+                    })),
+                    edges: data.edges.map(edge => ({
+                        id: edge.id,
+                        source: edge.source,
+                        target: edge.target,
+                        color: edge.color
+                    }))
+                },
+                container: 'container'
+            });
+        });
+</script>
+</body>
+</html>
